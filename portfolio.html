@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S M Mahalakshmi — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --dark:#0B0A14;
+    --dark-2:#151329;
+    --ink:#131320;
+    --muted:#6B6B7A;
+    --border:#ECEBF2;
+    --card:#FAFAFC;
+    --accent1:#6D5DF6;
+    --accent2:#A78BFA;
+    --accent-soft:#EFECFF;
+    --grad: linear-gradient(135deg,#7B6BFB,#5142E0);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:720px){ .wrap{padding:0 20px;} }
+  h1,h2,h3{font-weight:800; letter-spacing:-0.02em; line-height:1.08;}
+  .grad-text{
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  section{padding:96px 0;}
+  @media (max-width:720px){ section{padding:64px 0;} }
+  .eyebrow-icon{display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:var(--accent-soft); vertical-align:-4px; margin:0 3px;}
+  .eyebrow-icon svg{width:12px; height:12px;}
+
+  /* ============ HERO WRAPPER (striped background) ============ */
+  .hero-outer{
+    background:var(--dark);
+    padding:26px 20px 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-outer::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(109,93,246,0.55) 0px, rgba(109,93,246,0.55) 2px,
+        transparent 2px, transparent 14px),
+      radial-gradient(60% 50% at 50% 20%, rgba(167,139,250,0.35), transparent 70%);
+    filter:blur(1px);
+    opacity:0.9;
+  }
+  .hero-outer::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(11,10,20,0.15) 0%, rgba(11,10,20,0.55) 55%, var(--dark) 92%);
+  }
+  .hero-card{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    background:linear-gradient(180deg, #121022 0%, #0C0B18 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:26px 34px 40px;
+    box-shadow:0 40px 90px -30px rgba(80,60,220,0.55);
+  }
+  @media (max-width:720px){ .hero-card{padding:20px 20px 30px; border-radius:18px;} }
+
+  /* nav */
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:8px 6px 34px;
+  }
+  .logo{
+    font-weight:800; font-size:17px; color:#fff; letter-spacing:-0.01em;
+  }
+  .nav-links{
+    display:flex; gap:30px;
+    font-size:13.5px; color:rgba(255,255,255,0.72);
+  }
+  .nav-links a:hover{color:#fff;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .btn{
+    font-size:13px; font-weight:600;
+    padding:10px 20px;
+    border-radius:999px;
+    display:inline-block;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-grad{ background:var(--grad); color:#fff; box-shadow:0 8px 22px -6px rgba(109,93,246,0.7); }
+  .btn-grad:hover{ filter:brightness(1.08); }
+  .btn-outline-dark{ border-color:rgba(255,255,255,0.28); color:#fff; }
+  .btn-outline-dark:hover{ border-color:#fff; }
+  .btn-outline-light{ border-color:rgba(19,19,32,0.2); color:var(--ink); }
+  .btn-outline-light:hover{ border-color:var(--ink); }
+
+  .hero-body{ text-align:center; padding:18px 10px 6px; }
+  .hero-body h1{
+    color:#fff;
+    font-size:clamp(30px, 4.6vw, 50px);
+    max-width:16ch;
+    margin:0 auto;
+  }
+  .hero-body p{
+    color:rgba(255,255,255,0.62);
+    max-width:46ch;
+    margin:20px auto 0;
+    font-size:15px;
+  }
+  .hero-ctas{ display:flex; gap:12px; justify-content:center; margin-top:28px; flex-wrap:wrap; }
+  .hero-note{ margin-top:10px; font-size:11.5px; color:rgba(255,255,255,0.4); }
+
+  .tool-row{
+    margin-top:46px;
+    display:flex; align-items:center; justify-content:center;
+    gap:40px; flex-wrap:wrap;
+    padding-top:26px;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  .tool-row span{
+    font-size:14px; font-weight:600; color:rgba(255,255,255,0.4);
+    display:flex; align-items:center; gap:7px;
+  }
+  .tool-row span:hover{ color:rgba(255,255,255,0.85); }
+  .tool-dot{width:6px; height:6px; border-radius:50%; background:var(--accent2);}
+
+  /* ============ BENTO SECTION ============ */
+  .sec-title{ text-align:center; max-width:640px; margin:0 auto 50px; }
+  .sec-title h2{ font-size:clamp(24px,3.4vw,34px); color:var(--ink); }
+  .sec-title h2 .eyebrow-icon{ background:var(--accent-soft); }
+  .sec-title p{ margin-top:14px; color:var(--muted); font-size:14.5px; }
+
+  .bento{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:16px;
+  }
+  .bcard{
+    grid-column:span 2;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+  }
+  .bcard.wide{ grid-column:span 3; }
+  @media (max-width:900px){
+    .bento{ grid-template-columns:repeat(2,1fr); }
+    .bcard, .bcard.wide{ grid-column:span 1; }
+  }
+  .bcard .bhead{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    font-size:12.5px; color:var(--muted); margin-bottom:16px;
+  }
+  .bcard .bhead .tag{ font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--accent1); background:var(--accent-soft); padding:3px 8px; border-radius:5px; }
+  .bcard .big{ font-size:28px; font-weight:800; color:var(--ink); }
+  .bcard .sub{ font-size:12px; color:var(--muted); margin-top:4px; }
+
+  /* dot matrix */
+  .dotgrid{ display:grid; grid-template-columns:repeat(9,1fr); gap:5px; margin-top:6px; }
+  .dotgrid i{ width:100%; padding-top:100%; border-radius:50%; display:block; background:var(--accent-soft); }
+  .dotgrid i.on{ background:var(--accent1); }
+
+  /* bars */
+  .barrow{ display:flex; align-items:flex-end; gap:7px; height:64px; margin-top:6px; }
+  .barrow b{ flex:1; background:var(--accent-soft); border-radius:4px 4px 0 0; }
+  .barrow b.on{ background:var(--grad); }
+
+  /* sparkline */
+  .spark{ width:100%; height:64px; margin-top:6px; }
+
+  /* ============ SKILLS STRIP ============ */
+  .skills-wrap{ background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .skill-groups{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media (max-width:820px){ .skill-groups{ grid-template-columns:repeat(2,1fr); } }
+  .skill-groups h4{ font-size:12px; font-family:'IBM Plex Mono'; color:var(--accent1); margin-bottom:12px; font-weight:500; }
+  .pillset{ display:flex; flex-wrap:wrap; gap:8px; }
+  .pill{ font-size:12.5px; padding:7px 12px; border:1px solid var(--border); border-radius:999px; background:#fff; }
+
+  /* ============ FEATURE CARDS ============ */
+  .feat-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  @media (max-width:900px){ .feat-grid{ grid-template-columns:1fr; } }
+  .feat-card{ border-radius:18px; padding:28px; min-height:280px; display:flex; flex-direction:column; justify-content:space-between; }
+  .feat-card.dark{ background:var(--grad); color:#fff; }
+  .feat-card.light{ background:var(--card); border:1px solid var(--border); }
+  .feat-card h3{ font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+  .feat-card.dark h3{ max-width:20ch; }
+  .feat-card p{ font-size:13px; margin-top:10px; opacity:0.85; }
+  .feat-card.dark p{ color:rgba(255,255,255,0.85); }
+  .feat-card.light p{ color:var(--muted); }
+  .feat-icon{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+  .feat-card.dark .feat-icon{ background:rgba(255,255,255,0.16); }
+  .feat-card.light .feat-icon{ background:var(--accent-soft); }
+  .feat-tag{ font-family:'IBM Plex Mono'; font-size:10.5px; padding:4px 9px; border-radius:6px; display:inline-block; }
+  .feat-card.dark .feat-tag{ background:rgba(255,255,255,0.16); color:#fff; }
+  .feat-card.light .feat-tag{ background:#fff; border:1px solid var(--border); color:var(--accent1); }
+
+  .gauge-wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+  .gauge{ position:relative; width:96px; height:96px; }
+  .gauge svg{ width:100%; height:100%; transform:rotate(-90deg); }
+  .gauge .gnum{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+  .gauge .gnum b{ font-size:20px; font-weight:800; }
+  .gauge .gnum span{ font-size:9px; color:var(--muted); }
+
+  /* ============ EXPERIENCE ============ */
+  .exp-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+  @media (max-width:820px){ .exp-grid{ grid-template-columns:1fr; } }
+  .exp-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:26px; }
+  .exp-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .exp-avatar{ width:42px; height:42px; border-radius:10px; background:var(--grad); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; }
+  .exp-top h3{ font-size:15px; }
+  .exp-top .org{ font-size:12.5px; color:var(--muted); }
+  .exp-when{ font-family:'IBM Plex Mono'; font-size:11px; color:var(--accent1); margin-bottom:12px; }
+  .exp-card ul{ padding-left:18px; }
+  .exp-card li{ font-size:13.5px; color:#3B3B47; margin-bottom:7px; }
+  .quote-strip{ margin-top:26px; background:var(--dark); border-radius:16px; padding:30px 34px; color:#fff; }
+  .quote-strip p{ font-size:15.5px; max-width:70ch; color:rgba(255,255,255,0.85); }
+  .quote-strip .who{ margin-top:14px; font-size:12.5px; color:rgba(255,255,255,0.5); font-family:'IBM Plex Mono'; }
+
+  /* ============ PROJECTS ============ */
+  .proj-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:900px){ .proj-grid{ grid-template-columns:1fr; } }
+  .proj-card{ border:1px solid var(--border); border-radius:16px; padding:24px; background:#fff; }
+  .proj-card h3{ font-size:16.5px; margin-bottom:6px; }
+  .proj-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+  .proj-card ul{ padding-left:18px; margin-bottom:16px; }
+  .proj-card li{ font-size:13px; color:#3B3B47; margin-bottom:6px; }
+  .proj-stat-row{ display:flex; gap:16px; flex-wrap:wrap; padding-top:14px; border-top:1px dashed var(--border); }
+  .proj-stat-row div span.n{ display:block; font-size:17px; font-weight:800; color:var(--accent1); }
+  .proj-stat-row div span.l{ font-size:10.5px; color:var(--muted); }
+
+  /* ============ EDUCATION ============ */
+  .edu-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:40px; }
+  @media (max-width:820px){ .edu-grid{ grid-template-columns:1fr; gap:30px; } }
+  .edu-row{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--border); font-size:14px; }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-row .school{ color:var(--muted); font-size:12.5px; margin-top:2px; }
+  .edu-row .score{ font-family:'IBM Plex Mono'; color:var(--accent1); font-size:13px; }
+  .cert-row{ display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--border); }
+  .cert-row:last-child{ border-bottom:none; }
+  .cert-row .check{ color:var(--accent1); font-family:'IBM Plex Mono'; }
+  .cert-row .meta{ font-size:12px; color:var(--muted); margin-top:2px; }
+
+  /* ============ CTA BANNER ============ */
+  .cta-banner{
+    background:var(--dark);
+    border-radius:22px;
+    margin:0 auto;
+    max-width:1180px;
+    padding:64px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(60% 80% at 50% 0%, rgba(109,93,246,0.45), transparent 70%);
+  }
+  .cta-banner *{ position:relative; z-index:1; }
+  .cta-banner h2{ color:#fff; font-size:clamp(24px,3.6vw,36px); max-width:18ch; margin:0 auto; }
+  .cta-banner p{ color:rgba(255,255,255,0.6); margin-top:14px; font-size:14.5px; }
+  .cta-ctas{ display:flex; gap:12px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+
+  /* ============ FOOTER ============ */
+  footer{ padding:70px 0 40px; }
+  .foot-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:30px; margin-bottom:50px; }
+  @media (max-width:800px){ .foot-grid{ grid-template-columns:repeat(2,1fr); } }
+  .foot-grid h4{ font-size:12px; font-family:'IBM Plex Mono'; color:var(--muted); margin-bottom:14px; }
+  .foot-grid ul{ list-style:none; }
+  .foot-grid li{ margin-bottom:9px; font-size:13.5px; }
+  .foot-grid li a:hover{ color:var(--accent1); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:26px; border-top:1px solid var(--border); font-size:12.5px; color:var(--muted); flex-wrap:wrap; gap:10px; }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero-outer">
+  <div class="hero-card">
+    <div class="nav">
+      <div class="logo">Mahalakshmi.</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#work">Projects</a>
+        <a href="#do">What I Do</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-grad" href="#contact">Hire Me</a>
+    </div>
+
+    <div class="hero-body" id="home">
+      <h1>Unlock <span class="grad-text">Powerful</span> Insights From Your Data</h1>
+      <p>I'm a Data Analyst turning messy spreadsheets and databases into KPI dashboards, ETL pipelines and decisions leadership can act on — with Python, SQL and Power BI.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-grad" href="#work">View Projects</a>
+        <a class="btn btn-outline-dark" href="#contact">Get In Touch ›</a>
+      </div>
+      <div class="hero-note">Based in Madurai, Tamil Nadu · Open to Data Analyst roles</div>
+    </div>
+
+    <div class="tool-row">
+      <span><i class="tool-dot"></i>Python (Pandas)</span>
+      <span><i class="tool-dot"></i>PostgreSQL</span>
+      <span><i class="tool-dot"></i>Power BI</span>
+      <span><i class="tool-dot"></i>MS Excel</span>
+      <span><i class="tool-dot"></i>GitHub</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BENTO: REAL NUMBERS ============ -->
+<section class="wrap" id="work">
+  <div class="sec-title">
+    <h2>Real Numbers <span class="eyebrow-icon">📊</span> From Real Projects</h2>
+    <p>Every dashboard I build and every dataset I clean is measured — here's what that's looked like in practice.</p>
+  </div>
+
+  <div class="bento">
+    <div class="bcard wide">
+      <div class="bhead"><span>Sales Dataset Cleaned</span><span class="tag">2026</span></div>
+      <div class="big">100% accuracy</div>
+      <div class="sub">$5M+ dataset, fully cleaned &amp; transformed</div>
+      <div class="dotgrid" id="dotgrid"></div>
+    </div>
+
+    <div class="bcard">
+      <div class="bhead"><span>Reporting Efficiency</span></div>
+      <div class="big">40%</div>
+      <div class="sub">Gain from automated workflows</div>
+      <div class="barrow">
+        <b style="height:35%"></b><b class="on" style="height:55%"></b><b class="on" style="height:75%"></b><b class="on" style="height:90%"></b>
+      </div>
+    </div>
+
+    <div class="bcard">
+      <div class="bhead"><span>Salary Gap Found</span></div>
+      <div class="big">$2,045</div>
+      <div class="sub">Average variance uncovered</div>
+      <svg class="spark" viewBox="0 0 200 64" preserveAspectRatio="none">
+        <polyline points="0,50 30,40 60,44 90,20 120,28 150,10 180,16 200,8" fill="none" stroke="var(--accent1)" stroke-width="2.5"/>
+      </svg>
+    </div>
+
+    <div class="bcard">
+      <div class="bhead"><span>Records Analysed</span></div>
+      <div class="big">1,470</div>
+      <div class="sub">Employee records, full EDA</div>
+      <div class="barrow">
+        <b class="on" style="height:70%"></b><b style="height:30%"></b><b class="on" style="height:50%"></b><b style="height:40%"></b><b class="on" style="height:60%"></b>
+      </div>
+    </div>
+
+    <div class="bcard wide">
+      <div class="bhead"><span>Highest-Risk Attrition Segment</span><span class="tag">Under-25</span></div>
+      <div class="big">39% attrition rate</div>
+      <div class="sub">Identified through variance &amp; cohort analysis, HR Retention project</div>
+      <svg class="spark" viewBox="0 0 400 64" preserveAspectRatio="none">
+        <polyline points="0,50 40,45 80,48 120,30 160,34 200,15 240,20 280,38 320,25 360,12 400,18" fill="none" stroke="url(#g1)" stroke-width="3"/>
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7B6BFB"/><stop offset="1" stop-color="#5142E0"/></linearGradient></defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS STRIP ============ -->
+<div class="skills-wrap">
+  <section class="wrap">
+    <div class="sec-title" style="margin-bottom:36px;">
+      <h2>Tools <span class="eyebrow-icon">🛠</span> I Work With</h2>
+    </div>
+    <div class="skill-groups">
+      <div>
+        <h4>LANGUAGES &amp; ANALYSIS</h4>
+        <div class="pillset">
+          <span class="pill">Python (Pandas)</span>
+          <span class="pill">Data Wrangling</span>
+          <span class="pill">Data Cleaning</span>
+          <span class="pill">EDA</span>
+        </div>
+      </div>
+      <div>
+        <h4>DATABASES</h4>
+        <div class="pillset">
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">SQL Joins</span>
+          <span class="pill">CTEs</span>
+          <span class="pill">Window Functions</span>
+        </div>
+      </div>
+      <div>
+        <h4>BI &amp; VISUALISATION</h4>
+        <div class="pillset">
+          <span class="pill">Power BI (DAX)</span>
+          <span class="pill">KPI Dashboards</span>
+          <span class="pill">Data Storytelling</span>
+        </div>
+      </div>
+      <div>
+        <h4>PRODUCTIVITY &amp; TOOLS</h4>
+        <div class="pillset">
+          <span class="pill">MS Excel</span>
+          <span class="pill">Pivot Tables</span>
+          <span class="pill">XLOOKUP</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ FEATURE CARDS: WHAT I DO ============ -->
+<section class="wrap" id="do">
+  <div class="sec-title">
+    <h2>How I Turn <span class="eyebrow-icon">⚙️</span> Data Into Decisions</h2>
+    <p>The day-to-day behind every dashboard — from a messy export to a number leadership can act on.</p>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat-card dark">
+      <div>
+        <div class="feat-icon">🧹</div>
+        <h3>I clean and automate the boring parts of data work</h3>
+        <p>Sourcing data from spreadsheets, databases and exports, fixing missing values and duplicates, and scripting the weekly reports that used to be copy-paste.</p>
+      </div>
+      <span class="feat-tag">Python · Pandas</span>
+    </div>
+
+    <div class="feat-card light">
+      <div>
+        <div class="feat-icon">📈</div>
+        <h3>I build dashboards people actually read</h3>
+        <p>KPI dashboards designed for a manager to understand at a glance, with the right chart for the right metric — refreshed automatically.</p>
+      </div>
+      <span class="feat-tag">Power BI · DAX</span>
+    </div>
+
+    <div class="feat-card light">
+      <div>
+        <h3 style="margin-bottom:18px;">I keep data trustworthy before it reaches a slide</h3>
+        <div class="gauge-wrap">
+          <div class="gauge">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#ECEBF2" stroke-width="10"/>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="url(#g2)" stroke-width="10" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="10"/>
+              <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#7B6BFB"/><stop offset="1" stop-color="#5142E0"/></linearGradient></defs>
+            </svg>
+            <div class="gnum"><b>100</b><span>/100</span></div>
+          </div>
+          <div>
+            <div style="font-size:13px; font-weight:700;">Data accuracy delivered</div>
+            <div style="font-size:12px; color:var(--muted);">Across every dataset I've shipped</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="wrap" id="experience">
+  <div class="sec-title">
+    <h2>Where <span class="eyebrow-icon">💼</span> I've Worked</h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-top">
+        <div class="exp-avatar">SSL</div>
+        <div>
+          <h3>Software Faculty</h3>
+          <div class="org">SSL Institute, Madurai</div>
+        </div>
+      </div>
+      <div class="exp-when">MAY 2026 – AUG 2026</div>
+      <ul>
+        <li>Designed and delivered structured sessions on Python, SQL and web technologies aligned with IT industry requirements.</li>
+        <li>Developed course materials and real-world project assignments bridging theory and industry practice.</li>
+        <li>Managed the technical lab — installs, configuration and troubleshooting.</li>
+        <li>Monitored student progress and gave targeted feedback to improve outcomes.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="exp-top">
+        <div class="exp-avatar">GSS</div>
+        <div>
+          <h3>Data Analytics Intern</h3>
+          <div class="org">Gateway Software Solutions, Madurai</div>
+        </div>
+      </div>
+      <div class="exp-when">MAR 2026 – APR 2026</div>
+      <ul>
+        <li>Streamlined ETL workflows using Python and SQL to prepare datasets for stakeholder reporting.</li>
+        <li>Automated repetitive data workflows, improving efficiency and reducing manual effort.</li>
+        <li>Designed interactive KPI dashboards in Power BI to monitor business health metrics.</li>
+        <li>Ran data integrity checks to keep internal reporting accurate.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote-strip">
+    <p>"Results-driven Data Analyst with hands-on experience in Python, SQL, Power BI and Excel — proven ability to design ETL workflows, build interactive KPI dashboards and translate complex datasets into clear business insights."</p>
+    <div class="who">S M MAHALAKSHMI — PROFESSIONAL SUMMARY</div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="wrap">
+  <div class="sec-title">
+    <h2>Projects <span class="eyebrow-icon">🗂</span> Worth A Closer Look</h2>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <h3>Sales Performance Dashboard</h3>
+      <div class="proj-tags"><span class="pill">Power BI</span></div>
+      <ul>
+        <li>Interactive BI dashboard tracking KPIs and sales performance across regions.</li>
+        <li>Cleaned and transformed a $5M+ dataset with 100% accuracy.</li>
+        <li>Flagged a 15–20% performance drop, enabling corrective action.</li>
+      </ul>
+      <div class="proj-stat-row">
+        <div><span class="n">$5M+</span><span class="l">DATASET</span></div>
+        <div><span class="n">40%</span><span class="l">EFFICIENCY</span></div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <h3>HR Attrition &amp; Retention Analytics</h3>
+      <div class="proj-tags"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Power BI</span></div>
+      <ul>
+        <li>EDA on 1,470 employee records to uncover attrition drivers.</li>
+        <li>Found a $2,045 average salary gap through variance analysis.</li>
+        <li>Flagged under-25 as the highest-risk segment.</li>
+      </ul>
+      <div class="proj-stat-row">
+        <div><span class="n">1,470</span><span class="l">RECORDS</span></div>
+        <div><span class="n">39%</span><span class="l">ATTRITION</span></div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <h3>SQL Business Insights Analysis</h3>
+      <div class="proj-tags"><span class="pill">PostgreSQL</span></div>
+      <ul>
+        <li>Complex SQL queries — joins, CTEs, window functions — on large datasets.</li>
+        <li>Surfaced customer behaviour patterns through aggregation and trend analysis.</li>
+        <li>Delivered structured datasets for downstream BI dashboards.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="wrap">
+  <div class="sec-title" style="margin-bottom:36px;">
+    <h2>Education <span class="eyebrow-icon">🎓</span> &amp; Certifications</h2>
+  </div>
+  <div class="edu-grid">
+    <div>
+      <div class="edu-row">
+        <div><div>B.Tech, Information Technology</div><div class="school">K.L.N College of Engineering · 2019</div></div>
+        <div class="score">69%</div>
+      </div>
+      <div class="edu-row">
+        <div><div>HSC (Class XII)</div><div class="school">National Matric Hr. Sec. School · 2015</div></div>
+        <div class="score">89.17%</div>
+      </div>
+      <div class="edu-row">
+        <div><div>SSLC (Class X)</div><div class="school">National Matric Hr. Sec. School · 2013</div></div>
+        <div class="score">93.4%</div>
+      </div>
+    </div>
+    <div>
+      <div class="cert-row">
+        <span class="check">✓</span>
+        <div><div>Data Analytics Internship</div><div class="meta">Gateway Software Solutions, Madurai · Mar–Apr 2026</div></div>
+      </div>
+      <div class="cert-row">
+        <span class="check">✓</span>
+        <div><div>Basics of Python</div><div class="meta">Infosys Springboard · issued Jul 30, 2026</div></div>
+      </div>
+      <div class="cert-row">
+        <span class="check">✓</span>
+        <div><div>Data Analytics Job Simulation</div><div class="meta">Deloitte, via Forage · completed Sep 7, 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="wrap" id="contact">
+  <div class="cta-banner">
+    <h2>Let's Turn Your Data Into Decisions</h2>
+    <p>Open to Data Analyst roles in Madurai — reach out any time.</p>
+    <div class="cta-ctas">
+      <a class="btn btn-grad" href="mailto:sittumuralimahalakshmi@gmail.com">Email Me</a>
+      <a class="btn btn-outline-dark" href="https://linkedin.com/in/mahalakshmi-s-m-893b573b1" target="_blank">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="wrap">
+  <div class="foot-grid">
+    <div>
+      <div class="logo" style="color:var(--ink); margin-bottom:12px;">Mahalakshmi.</div>
+      <p style="font-size:13px; color:var(--muted); max-width:32ch;">Data Analyst based in Madurai, Tamil Nadu — Python, SQL, Power BI and Excel.</p>
+    </div>
+    <div>
+      <h4>EXPLORE</h4>
+      <ul>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#do">What I Do</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>CONNECT</h4>
+      <ul>
+        <li><a href="mailto:sittumuralimahalakshmi@gmail.com">Email</a></li>
+        <li><a href="tel:+916383519706">+91 63835 19706</a></li>
+        <li><a href="https://linkedin.com/in/mahalakshmi-s-m-893b573b1" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/Mahalakshmi-SM" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>LOCATION</h4>
+      <ul>
+        <li>Madurai</li>
+        <li>Tamil Nadu, India</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 S M Mahalakshmi</span>
+    <span>Data Analyst Portfolio</span>
+  </div>
+</footer>
+
+<script>
+  // build dot matrix grid: 3 rows x 9 cols, weighted toward "on" to suggest a filled dataset
+  const dg = document.getElementById('dotgrid');
+  const total = 27;
+  const onCount = 20;
+  const pattern = Array.from({length: total}, (_, i) => i < onCount);
+  for (let i = pattern.length - 1; i > 0; i--) {
+    const j = Math.floor(((i * 9301 + 49297) % 233280) / 233280 * (i + 1));
+    [pattern[i], pattern[j]] = [pattern[j], pattern[i]];
+  }
+  pattern.forEach(on => {
+    const dot = document.createElement('i');
+    if (on) dot.classList.add('on');
+    dg.appendChild(dot);
+  });
+</script>
+
+</body>
+</html>
